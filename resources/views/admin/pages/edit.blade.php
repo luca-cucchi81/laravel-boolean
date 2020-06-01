@@ -159,7 +159,7 @@
                                 <div class="form-check form-check-inline">
                                     @if (is_array($oldtags))
                                         <input class="form-check-input"  type="checkbox" name="tags[]" id="tag{{$tag['id']}}" value="{{$tag['id']}}"
-                                        {{(in_array($tag['id]'], $oldtags)) ? 'checked' : ''}}>
+                                        {{(in_array($tag['id'], $oldtags)) ? 'checked' : ''}}>
                                     @else 
                                         <input class="form-check-input"  type="checkbox" name="tags[]" id="tag{{$tag['id']}}" value="{{$tag['id']}}"
                                         {{(in_array($tag['id'], $page['tags'])) ? 'checked' : ''}}>
