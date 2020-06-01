@@ -82,11 +82,11 @@
                                        @endif
                                    @endforeach
                                 </td>
-                                <td><a class="btn btn-primary col-10"href="#" role="button">SHOW</a></td>
-                                <td><a class="btn btn-secondary col-10 offset-1" href="#" role="button">EDIT</a></td>
+                                <td><a class="btn btn-primary col-8"href="#" role="button">SHOW</a></td>
+                                <td><a class="btn btn-secondary col-8 offset-2" href="#" role="button">EDIT</a></td>
                                 <td>
                                     <form action="">
-                                        <input class="btn btn-danger col-10 offset-1" type="submit" value="DELETE">
+                                        <input class="btn btn-danger col-8 offset-2" type="submit" value="DELETE">
                                     </form>
                                 </td>
                             </tr>
