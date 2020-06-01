@@ -17,7 +17,7 @@
             'tags' => [
                 1,
                 5,
-                8
+                7
             ]
         ],
         [
@@ -53,7 +53,7 @@
                         <h2 class="font-weight-bold">Pages</h2>
                      </div>
                     <div class="offset-3 col-3">
-                        <a class="btn btn-success font-weight-bold" href="#">NEW PAGE</a>
+                        <a class="btn btn-success font-weight-bold" href="{{route('admin.pages.create')}}">NEW PAGE</a>
                     </div>
                 </div>
                 
