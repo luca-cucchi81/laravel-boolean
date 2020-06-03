@@ -82,11 +82,13 @@
                                        @endif
                                    @endforeach
                                 </td>
-                                <td><a class="btn btn-primary col-8"href="#" role="button">SHOW</a></td>
+                                <td><a class="btn btn-primary col-8"href="{{route('admin.pages.show', $page->id)}}" role="button">SHOW</a></td>
                                 @if (Auth::id() == $page['user_id'])
                                      <td><a class="btn btn-secondary col-8 offset-2" href="{{route('admin.pages.edit', $page->id)}}" role="button">EDIT</a></td>
                                      <td>
-                                        <form action="">
+                                     <form action="{{route('admin.pages.destroy', $page->id)}}" method="POST">
+                                            @csrf
+                                            @method('DELETE')
                                             <input class="btn btn-danger col-8 offset-2" type="submit" value="DELETE">
                                         </form>
                                      </td>

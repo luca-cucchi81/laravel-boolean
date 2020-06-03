@@ -1,4 +1,4 @@
-@php
+{{-- @php
     $categories = [
         [
             'id' => 1,
@@ -62,7 +62,7 @@
             'path' => 'images/photo_3.jpg'
         ]
     ];
-@endphp     
+@endphp   --}}   
 
 @extends('layouts.app')
 @section('content')
@@ -87,12 +87,12 @@
 
         <div class="row">
             <div class="col-8">
-                <form action="" method="post">
+            <form action="{{route('admin.pages.store')}}" method="post">
                     @csrf
                     @method('POST')
                     <div class="form-group">
                         <label for="title">Title</label>
-                        <input type="text" class="form-control" id="title" placeholder="Insert title">
+                        <input type="text" class="form-control" name="title" id="title" placeholder="Insert title">
                         @error('title')
                             <small class="form-text">Error</small>
                         @enderror
@@ -100,7 +100,7 @@
 
                     <div class="form-group">
                         <label for="summary">Summary</label>
-                        <input type="text" class="form-control" id="summary" placeholder="Insert summary">
+                        <input type="text" class="form-control" name="summary" id="summary" placeholder="Insert summary">
                         @error('summary')
                             <small class="form-text">Error</small>
                         @enderror
