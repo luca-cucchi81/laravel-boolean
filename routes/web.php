@@ -32,3 +32,19 @@ Route::get('/pages/create', function () {
 Route::get('/pages/{page}/edit', function () {
     return view('admin.pages.edit');
 })->name('admin.pages.edit');
+
+Route::get('/photos', function () {
+    return view('admin.photos.index');
+})->name('admin.photos.index');
+
+Route::get('/photos/create', function () {
+    return view('admin.photos.create');
+})->name('admin.photos.create');
+
+Route::post('/photos', 'Admin\PhotoController@store')->name('admin.photos.store');
+
+Route::get('/photos/{photo}/edit', function () {
+    return view('admin.photos.edit');
+})->name('admin.photos.edit');
+
+Route::patch('/photos/{photo}', 'Admin\PhotoController@update')->name('admin.photos.update');
