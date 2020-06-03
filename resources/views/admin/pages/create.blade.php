@@ -91,6 +91,12 @@
                     @csrf
                     @method('POST')
                     <div class="form-group">
+                        <div class="custom-control custom-switch">
+                            <input type="checkbox" class="custom-control-input" id="customSwitches" name="visible">
+                            <label class="custom-control-label" for="customSwitches">Visible</label>
+                        </div>
+                    </div>
+                    <div class="form-group">
                         <label for="title">Title</label>
                         <input type="text" class="form-control" name="title" id="title" placeholder="Insert title">
                         @error('title')
@@ -108,7 +114,7 @@
 
                     <div class="form-group">
                         <label for="category">Category</label>
-                        <select name="category" id="category" class="custom-select">
+                        <select name="category_id" id="category" class="custom-select">
                             @foreach ($categories as $category)
                                 <option value="{{$category['id']}}">{{$category['name']}}</option>
                             @endforeach

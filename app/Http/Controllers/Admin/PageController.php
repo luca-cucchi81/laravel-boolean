@@ -54,7 +54,7 @@ class PageController extends Controller
         } else {
             $data['visible'] = 1;
         }
-
+    
         $data['user_id'] = Auth::id();
         //validate
         $page = new Page;
