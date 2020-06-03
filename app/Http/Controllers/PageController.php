@@ -14,7 +14,9 @@ class PageController extends Controller
      */
     public function index()
     {
-        //
+        $pages = Page::where('visible', 1)->orderBy('updated_at', 'DESC')->paginate(25);
+
+        return view('guests.index', compact('pages'));
     }
 
     /**
