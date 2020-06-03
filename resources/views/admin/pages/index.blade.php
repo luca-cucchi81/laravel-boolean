@@ -73,26 +73,29 @@
                             <tr>
                                 <th>{{$page['id']}}</th>
                                 <td>{{$page['title']}}</td>
-                                <td>{{$page['category']}}</td>
+                                <td>{{$page->category->name}}</td>
                                 <td>
                                    @foreach ($page['tags'] as $tag)
-                                       {{$tag}}
+                                       {{$tag->name}}
                                        @if (!$loop->last)
                                            ,
                                        @endif
                                    @endforeach
                                 </td>
                                 <td><a class="btn btn-primary col-8"href="#" role="button">SHOW</a></td>
-                                <td><a class="btn btn-secondary col-8 offset-2" href="#" role="button">EDIT</a></td>
-                                <td>
-                                    <form action="">
-                                        <input class="btn btn-danger col-8 offset-2" type="submit" value="DELETE">
-                                    </form>
-                                </td>
+                                @if (Auth::id() == $page['user_id'])
+                                     <td><a class="btn btn-secondary col-8 offset-2" href="{{route('admin.pages.edit', $page->id)}}" role="button">EDIT</a></td>
+                                     <td>
+                                        <form action="">
+                                            <input class="btn btn-danger col-8 offset-2" type="submit" value="DELETE">
+                                        </form>
+                                     </td>
+                                @endif
                             </tr>
                         @endforeach 
                     </tbody>
                  </table>
+                 {{$pages->links()}}
             </div>
         </div>
     </div>

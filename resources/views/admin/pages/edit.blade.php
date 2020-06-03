@@ -1,5 +1,5 @@
 @php
-    $categories = [
+/*     $categories = [
         [
             'id' => 1,
             'name' => 'Miscellanea'
@@ -77,7 +77,7 @@
             1,
             3
         ]
-    ];
+    ]; */
 
     $oldtags = null;
     $message = '';
@@ -106,12 +106,12 @@
 
         <div class="row">
             <div class="col-8">
-                <form action="" method="post">
+            <form action="{{route('admin.pages.update', $page->id)}}" method="post">
                     @csrf
                     @method('PUT')
                     <div class="form-group">
                         <label for="title">Title</label>
-                        <input type="text" class="form-control" id="title" value="{{$page['title']}}">
+                        <input type="text" class="form-control" name="title" id="title" value="{{$page['title']}}">
                         @error('title')
                             <small class="form-text">Error</small>
                         @enderror
@@ -119,7 +119,7 @@
 
                     <div class="form-group">
                         <label for="summary">Summary</label>
-                        <input type="text" class="form-control" id="summary" value="{{$page['summary']}}">
+                        <input type="text" class="form-control" name="summary" id="summary" value="{{$page['summary']}}">
                         @error('summary')
                             <small class="form-text">Error</small>
                         @enderror
@@ -135,7 +135,7 @@
                                     @endphp
                                     <option value="{{$category['id']}}" {{$message}}>{{$category['name']}}</option>
                                 @else
-                                <option value="{{$category['id']}}">{{$category['name']}}</option>
+                                    <option value="{{$category['id']}}">{{$category['name']}}</option>
                                 @endif
                             @endforeach
                         </select>
@@ -157,12 +157,12 @@
                             <legend>Tags</legend>
                             @foreach ($tags as $tag)
                                 <div class="form-check form-check-inline">
-                                    @if (is_array($oldtags))
+                                    @if(is_array(old('tags'))) 
                                         <input class="form-check-input"  type="checkbox" name="tags[]" id="tag{{$tag['id']}}" value="{{$tag['id']}}"
-                                        {{(in_array($tag['id'], $oldtags)) ? 'checked' : ''}}>
+                                        {{(in_array($tag['id'], old('tags'))) ? 'checked' : ''}}>
                                     @else 
                                         <input class="form-check-input"  type="checkbox" name="tags[]" id="tag{{$tag['id']}}" value="{{$tag['id']}}"
-                                        {{(in_array($tag['id'], $page['tags'])) ? 'checked' : ''}}>
+                                        {{($page->tags->contains($tag['id'])) ? 'checked' : ''}}>
                                     @endif
                                     <label class="form-check-label" for="tag{{$tag['id']}}">{{$tag['name']}}</label>
                                 </div>

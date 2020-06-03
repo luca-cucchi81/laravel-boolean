@@ -10,4 +10,9 @@ class Category extends Model
     {
         return $this->belongsTo('App\User');
     }
+
+    public function pages()
+    {
+        return $this->hasMany('App\Page');
+    }
 }

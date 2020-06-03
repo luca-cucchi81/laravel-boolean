@@ -32,7 +32,11 @@ class PageController extends Controller
      */
     public function create()
     {
-        //
+        $categories = Category::all();
+        $tags = Tag::all();
+        $photos = Photo::all();
+
+        return view('admin.pages.create', compact('categories', 'tags', 'photos'));
     }
 
     /**
@@ -65,7 +69,16 @@ class PageController extends Controller
      */
     public function edit($id)
     {
-        //
+        $userId = Auth::id(); 
+        $page = Page::findOrFail($id);
+        if ($userId != $page->user_id) {
+            abort('404');
+        }
+        $categories = Category::all();
+        $tags = Tag::all();
+        $photos = Photo::all();
+
+        return view('admin.pages.edit', compact('page', 'categories', 'tags', 'photos'));
     }
 
     /**
