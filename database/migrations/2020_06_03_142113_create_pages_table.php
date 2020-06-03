@@ -20,6 +20,7 @@ class CreatePagesTable extends Migration
             $table->string('title');
             $table->string('summary', 150);
             $table->text('body');
+            $table->boolean('visible');
             $table->timestamps();
         });
     }

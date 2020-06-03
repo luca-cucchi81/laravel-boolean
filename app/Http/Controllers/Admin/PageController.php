@@ -1,11 +1,17 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
-use App\Tag;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
-class TagController extends Controller
+use App\Page;
+use App\Category;
+use App\Tag;
+use App\Photo;
+
+class PageController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +20,9 @@ class TagController extends Controller
      */
     public function index()
     {
-        //
+        $pages = Page::orderBy('updated_at', 'DESC')->paginate(25);
+        return view('admin.pages.index', compact('pages'));
+
     }
 
     /**
@@ -41,10 +49,10 @@ class TagController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Tag  $tag
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Tag $tag)
+    public function show($id)
     {
         //
     }
@@ -52,10 +60,10 @@ class TagController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Tag  $tag
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Tag $tag)
+    public function edit($id)
     {
         //
     }
@@ -64,10 +72,10 @@ class TagController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Tag  $tag
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Tag $tag)
+    public function update(Request $request, $id)
     {
         //
     }
@@ -75,10 +83,10 @@ class TagController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Tag  $tag
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Tag $tag)
+    public function destroy($id)
     {
         //
     }

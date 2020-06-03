@@ -1,4 +1,4 @@
-@php
+{{-- @php
     $pages = [
         [
             'id'=> 1,
@@ -31,7 +31,7 @@
             ]
         ],
     ]
-@endphp
+@endphp --}}
 @extends('layouts.app')
 @section('content')
     <div class="container col-8">

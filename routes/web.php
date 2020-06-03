@@ -21,7 +21,7 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/pages', function () {
+/* Route::get('/pages', function () {
     return view('admin.pages.index');
 })->name('admin.pages.index');
 
@@ -47,4 +47,16 @@ Route::get('/photos/{photo}/edit', function () {
     return view('admin.photos.edit');
 })->name('admin.photos.edit');
 
-Route::patch('/photos/{photo}', 'Admin\PhotoController@update')->name('admin.photos.update');
+Route::patch('/photos/{photo}', 'Admin\PhotoController@update')->name('admin.photos.update'); */
+
+//Rotta guest
+Route::resource('pages', 'PageController');
+
+//Rotte admin
+Route::prefix('admin')
+->name('admin.')
+->namespace('Admin')
+->middleware('auth')
+->group(function (){
+    Route::resource('pages', 'PageController');
+});
